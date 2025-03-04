@@ -13,7 +13,18 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+       
+
+        $products = [
+            'tomatoes', 'chicken', 'beans', 'eggs', 'pasta', 'meat', 'potato'
+        ];
+
+        foreach ($products as $product) {
+            
+            \App\Models\ShoppingList::create([
+                'name' => $product,
+            ]);
+        }
 
         User::factory()->create([
             'name' => 'Test User',
