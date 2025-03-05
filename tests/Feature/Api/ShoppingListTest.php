@@ -60,4 +60,16 @@ class ShoppingListTest extends TestCase
             ->assertJsonCount(1)
             ->assertJsonFragment($data);
    }
+
+   public function test_CheckIfFunctionShowWorks(){
+    $reponse = $this->post(route('apistore'), [
+    'name' => 'potato',
+    ]);
+
+    $data = ['name' => 'potato'];
+    $response = $this->get(route('apishow', 1));
+    $response->assertStatus(200)
+             ->assertJsonCount(4)
+             ->assertJsonFragment($data);
+   }
 }
