@@ -29,6 +29,13 @@ class ShoppingListTest extends TestCase
 
         $response = $this->get(route('apihome'));
         $response->assertJsonCount(1);
+   }
 
+   public function test_CheckIfCanCreateNewEntryInListWithJsonFile(){
+    $response = $this->post(route('apistore'), ['name' => 'tomatoe']);
+
+    $response = $this->get(route('apihome'));
+    $response->assertStatus(200)
+            ->assertJsonCount(1);
    }
 }
