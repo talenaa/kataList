@@ -19,4 +19,16 @@ class ShoppingListTest extends TestCase
     $response->assertStatus(200)
              ->assertJsonCount(2);
    }
+
+   public function test_CheckIfCanDeleteEntryInListWithApi(){
+    $list = ShoppingList::factory(2)->create();
+
+        $response = $this->delete(route('apidestroy', 1));
+
+        $this->assertDatabaseCount('shopping_lists', 1);
+
+        $response = $this->get(route('apihome'));
+        $response->assertJsonCount(1);
+
+   }
 }
