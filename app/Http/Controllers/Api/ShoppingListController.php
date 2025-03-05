@@ -19,7 +19,7 @@ class ShoppingListController extends Controller
         $existing = ShoppingList::where('name', '=', $request->name)->first();
 
         if ($existing ){
-            return 'producto existente';
+            return 'this product exists';
         }
 
         $list = ShoppingList::create([

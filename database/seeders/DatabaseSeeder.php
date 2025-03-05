@@ -14,7 +14,6 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
        
-
         $products = [
             'tomatoes', 'chicken', 'beans', 'eggs', 'pasta', 'meat', 'potato'
         ];
