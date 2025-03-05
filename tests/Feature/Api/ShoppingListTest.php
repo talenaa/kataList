@@ -38,4 +38,26 @@ class ShoppingListTest extends TestCase
     $response->assertStatus(200)
             ->assertJsonCount(1);
    }
+
+   public function test_CheckIfCanUpdateProductInListWithJsonFile(){
+    $response = $this->post(route('apistore'), [
+        'name' => 'tomatoe',
+    ]);
+
+    $data = ['name' => 'tomatoe'];
+    $response = $this->get(route('apihome'));
+    $response->assertStatus(200)
+            ->assertJsonCount(1)
+            ->assertJsonFragment($data);
+
+    $response = $this->put('/api/list/update/1', [
+        'name' => 'altered tomatoe',
+    ]);
+
+    $data = ['name' => 'altered tomatoe'];
+    $response = $this->get(route('apihome'));
+    $response->assertStatus(200)
+            ->assertJsonCount(1)
+            ->assertJsonFragment($data);
+   }
 }
